@@ -3,6 +3,21 @@ import("../../js/chart.umd.js");
 import("https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js");
 const view = new View();
 
+const initDashboard = async (week = true, dashboardData) => {
+  document.querySelector("#app").innerHTML = await getHtml(week);
+  document.querySelector(
+    "#todayMetric"
+  ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[1].total} / ${dashboardData.dashboard.sales_over_time_week[1].orders} orders `;
+  document.querySelector(
+    "#weekMetric"
+  ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[2].total} / ${dashboardData.dashboard.sales_over_time_week[2].orders} orders `;
+  document.querySelector(
+    "#monthMetric"
+  ).innerHTML = `$${dashboardData.dashboard.sales_over_time_year[1].total} / ${dashboardData.dashboard.sales_over_time_year[1].orders} orders `;
+
+  listBestSellers(dashboardData.dashboard.bestsellers);
+};
+
 const createChart = function (chartData, week = true) {
   const ctx = document.getElementById("barChart");
 
@@ -155,4 +170,4 @@ const listBestSellers = async (sellerData) => {
   }).render(document.getElementById("bestSellersGrid"));
 };
 
-export default { getHtml, createChart, getDashboardData, listBestSellers };
+export default { getHtml, createChart, getDashboardData, listBestSellers,initDashboard };

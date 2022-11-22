@@ -21,61 +21,26 @@
 
       document.addEventListener("DOMContentLoaded", async () => {
         let dashboardData = await Dashboard.getDashboardData();
-        document.querySelector("#app").innerHTML = await Dashboard.getHtml();
-
+        await Dashboard.initDashboard(true, dashboardData);
         Dashboard.createChart(dashboardData.dashboard.sales_over_time_week);
-        document.querySelector(
-          "#todayMetric"
-        ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[1].total} / ${dashboardData.dashboard.sales_over_time_week[1].orders} orders `;
-        document.querySelector(
-          "#weekMetric"
-        ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[2].total} / ${dashboardData.dashboard.sales_over_time_week[2].orders} orders `;
-        document.querySelector(
-          "#monthMetric"
-        ).innerHTML = `$${dashboardData.dashboard.sales_over_time_year[1].total} / ${dashboardData.dashboard.sales_over_time_year[1].orders} orders `;
-
-        Dashboard.listBestSellers(dashboardData.dashboard.bestsellers);
 
         document
           .getElementById("revenueCheckBox")
           .addEventListener("change", async (event) => {
             console.log("revenueCheckBox", event);
             if (event.currentTarget.checked) {
-              document.querySelector("#app").innerHTML =
-                await Dashboard.getHtml(false);
+              await Dashboard.initDashboard(false, dashboardData);
               Dashboard.createChart(
                 dashboardData.dashboard.sales_over_time_year,
                 false
               );
-              document.querySelector(
-                "#todayMetric"
-              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[1].total} / ${dashboardData.dashboard.sales_over_time_week[1].orders} orders `;
-              document.querySelector(
-                "#weekMetric"
-              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[2].total} / ${dashboardData.dashboard.sales_over_time_week[2].orders} orders `;
-              document.querySelector(
-                "#monthMetric"
-              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_year[1].total} / ${dashboardData.dashboard.sales_over_time_year[1].orders} orders `;
-
-              Dashboard.listBestSellers(dashboardData.dashboard.bestsellers);
             } else {
-              document.querySelector("#app").innerHTML =
-                await Dashboard.getHtml(true);
+              await Dashboard.initDashboard(true, dashboardData);
+
               Dashboard.createChart(
                 dashboardData.dashboard.sales_over_time_week,
                 true
               );
-              document.querySelector(
-                "#todayMetric"
-              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[1].total} / ${dashboardData.dashboard.sales_over_time_week[1].orders} orders `;
-              document.querySelector(
-                "#weekMetric"
-              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[2].total} / ${dashboardData.dashboard.sales_over_time_week[2].orders} orders `;
-              document.querySelector(
-                "#monthMetric"
-              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_year[1].total} / ${dashboardData.dashboard.sales_over_time_year[1].orders} orders `;
-
-              Dashboard.listBestSellers(dashboardData.dashboard.bestsellers);
             }
           });
       });
