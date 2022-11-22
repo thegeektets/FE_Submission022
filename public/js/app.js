@@ -18,7 +18,7 @@ const navigateTo = url => {
     router();
 };
 
-const router = async () => {
+window.router = async () => {
     const routes = [
         { path: "/", view: Login },
         { path: "/orders", view: Orders },
@@ -56,6 +56,5 @@ document.addEventListener("DOMContentLoaded", () => {
             navigateTo(e.target.href);
         }
     });
-
     router();
 });

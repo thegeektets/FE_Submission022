@@ -1,63 +1,66 @@
 body {
-    margin: 0 0 0 var(--nav-width);
-    font-family: 'Quicksand', sans-serif;
-    font-size: 18px;
-    background-color: #d8d8d8;
+  margin: 0 0 0 var(--nav-width);
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  background-color: #d8d8d8;
 }
 
 .app--header {
-    background-color: #1f2e78;
-    height: 50px;
-    width: 100vw;
+  background-color: #1f2e78;
+  height: 50px;
+  width: 100vw;
 }
 #app {
-    --nav-width: 200px;
-
-    margin: 2em;
-    line-height: 1.5;
-    font-weight: 500;
+  --nav-width: 200px;
+  margin: 2em;
+  line-height: 1.5;
+  font-weight: 500;
 }
 .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--nav-width);
-    height: 100vh;
-    background: #222222;
+  width: var(--nav-width);
+  height: 100vh;
+  color: #222222;
+  float: left;
+  border-right: 1px solid #222222;
+  margin-right: 20px;
+}
+.nav img {
+  height: auto;
+  width: 100px;
+  margin-left: 20px;
 }
 
 .nav__link {
-    display: block;
-    padding: 12px 18px;
-    text-decoration: none;
-    color: #eeeeee;
-    font-weight: 500;
+  display: block;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: #1f2e78;
+  font-weight: 500;
 }
 
 .nav__link:hover {
-    background: rgba(255, 255, 255, 0.05);
+  text-decoration: underline;
 }
-
 
 .login--form {
-    width: 30vw;
-    margin: auto;
-    margin-top: 10vh;
-    border: #979797 4px solid;
-    padding: 30px;
-    text-align: center;
+  width: 30vw;
+  margin: auto;
+  margin-top: 10vh;
+  border: #979797 4px solid;
+  padding: 30px;
+  text-align: center;
 }
 .login--form img {
-    float: right;
-    height: 100px;
-    width: auto;
+  float: right;
+  height: 100px;
+  width: auto;
 }
 .login--form h1 {
-    text-align: left;
-    float: left;
-    font-weight: 400;
-    font-size: 28px;
-    width: 70%;
+  text-align: left;
+  float: left;
+  font-weight: 400;
+  font-size: 28px;
+  width: 70%;
 }
 .login--form input {
   display: block;
@@ -68,14 +71,12 @@ body {
 }
 
 .login--form button {
-    font-size: 20px;
-    height: 30px;
-    width: 200px;
-    border: 1px solid #979797;
+  font-size: 20px;
+  height: 30px;
+  width: 200px;
+  border: 1px solid #979797;
 }
 
-
-
 a {
-    color: #009579;
+  color: #009579;
 }

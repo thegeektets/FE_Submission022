@@ -6,9 +6,8 @@ export default class extends View {
     this.setTitle("Login");
   }
 
-
   async getHtml() {
-    return`<div class="login--form">
+    return `<div class="login--form">
             <h1>Freddy's
             Artisanal
             Halloween
@@ -16,12 +15,11 @@ export default class extends View {
             </h1>
             <img src="./assets/imgs/logo.svg"/>
 
-            <form>
-                <input type="text" placeholder="Username"></input>
-                <input type="password" placeholder="Password"></input>
-                <button> Login </button>
+            <form id="loginForm">
+                <input type="text" name="username" placeholder="Username" id="loginUsername"></input>
+                <input type="password" name="password"placeholder="Password" id="loginPassword"></input>
+                <button type="submit"> Login </button>
             </form>
-
             </div>
         `;
   }
