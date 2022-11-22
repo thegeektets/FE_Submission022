@@ -1,13 +1,5 @@
-import View from "./View.js";
-
-export default class extends View {
-  constructor(params) {
-    super(params);
-    this.setTitle("Login");
-  }
-
-  async getHtml() {
-    return `<div class="login--form">
+const getHtml = async () => {
+  return `<div class="login--form">
             <h1>Freddy's
             Artisanal
             Halloween
@@ -22,5 +14,38 @@ export default class extends View {
             </form>
             </div>
         `;
-  }
-}
+};
+const loginSubmit = async (event) => {
+  event.preventDefault();
+  let loginForm = event.target;
+  let loginData = new FormData(loginForm);
+  let payload = {
+    username: loginData.get("username").toString(),
+    password: loginData.get("password").toString(),
+  };
+
+  console.log("payload", JSON.stringify(payload));
+
+  let loginUrl = "https://freddy.codesubmit.io/login";
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", loginUrl, true);
+  xhr.setRequestHeader("Content-type", "application/json");
+
+  xhr.onload = function () {
+    let jsonResponse = JSON.parse(xhr.response);
+    console.log(jsonResponse);
+
+    // do something to response
+    if (xhr.status === 200) {
+      swal("Login Success!", "user logged in", "success");
+      localStorage.setItem("access_token", jsonResponse.access_token);
+      localStorage.setItem("refresh_token", jsonResponse.refresh_token);
+      window.location.assign("dashboard.html");
+    } else {
+      swal("Login Failed!", jsonResponse.msg, "error");
+    }
+  };
+  xhr.send(JSON.stringify(payload));
+};
+
+export default { getHtml, loginSubmit };

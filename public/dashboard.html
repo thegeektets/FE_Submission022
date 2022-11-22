@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halloween Shop</title>
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    <link rel="stylesheet" href="./assets/css/switch.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+  <body>
+    <div class="app--header"></div>
+    <div id="app"></div>
+    <script type="module">
+      import Dashboard from "./js/views/Dashboard.js";
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        let dashboardData = await Dashboard.getDashboardData();
+        document.querySelector("#app").innerHTML = await Dashboard.getHtml();
+
+        Dashboard.createChart(dashboardData.dashboard.sales_over_time_week);
+        document.querySelector(
+          "#todayMetric"
+        ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[1].total} / ${dashboardData.dashboard.sales_over_time_week[1].orders} orders `;
+        document.querySelector(
+          "#weekMetric"
+        ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[2].total} / ${dashboardData.dashboard.sales_over_time_week[2].orders} orders `;
+        document.querySelector(
+          "#monthMetric"
+        ).innerHTML = `$${dashboardData.dashboard.sales_over_time_year[1].total} / ${dashboardData.dashboard.sales_over_time_year[1].orders} orders `;
+
+        Dashboard.listBestSellers(dashboardData.dashboard.bestsellers);
+
+        document
+          .getElementById("revenueCheckBox")
+          .addEventListener("change", async (event) => {
+            console.log("revenueCheckBox", event);
+            if (event.currentTarget.checked) {
+              document.querySelector("#app").innerHTML =
+                await Dashboard.getHtml(false);
+              Dashboard.createChart(
+                dashboardData.dashboard.sales_over_time_year,
+                false
+              );
+              document.querySelector(
+                "#todayMetric"
+              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[1].total} / ${dashboardData.dashboard.sales_over_time_week[1].orders} orders `;
+              document.querySelector(
+                "#weekMetric"
+              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[2].total} / ${dashboardData.dashboard.sales_over_time_week[2].orders} orders `;
+              document.querySelector(
+                "#monthMetric"
+              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_year[1].total} / ${dashboardData.dashboard.sales_over_time_year[1].orders} orders `;
+
+              Dashboard.listBestSellers(dashboardData.dashboard.bestsellers);
+            } else {
+              document.querySelector("#app").innerHTML =
+                await Dashboard.getHtml(true);
+              Dashboard.createChart(
+                dashboardData.dashboard.sales_over_time_week,
+                true
+              );
+              document.querySelector(
+                "#todayMetric"
+              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[1].total} / ${dashboardData.dashboard.sales_over_time_week[1].orders} orders `;
+              document.querySelector(
+                "#weekMetric"
+              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_week[2].total} / ${dashboardData.dashboard.sales_over_time_week[2].orders} orders `;
+              document.querySelector(
+                "#monthMetric"
+              ).innerHTML = `$${dashboardData.dashboard.sales_over_time_year[1].total} / ${dashboardData.dashboard.sales_over_time_year[1].orders} orders `;
+
+              Dashboard.listBestSellers(dashboardData.dashboard.bestsellers);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

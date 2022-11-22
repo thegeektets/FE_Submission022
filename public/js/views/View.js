@@ -13,9 +13,9 @@ export default class {
         <a href="/"
         <img src="http://localhost/FE_Submission022/public/assets/imgs/logo.svg"/>
         </a>
-        <a href="/dashboard" class="nav__link" data-link>Dashboard</a>
-        <a href="/orders" class="nav__link" data-link>Orders</a>
-        <a href="/logout" class="nav__link" data-link>Logout</a>
+        <a href="dashboard.html" class="nav__link" data-link>Dashboard</a>
+        <a href="orders.html" class="nav__link" data-link>Orders</a>
+        <a href="index.html" class="nav__link" data-link>Logout</a>
     </nav>`;
   }
 

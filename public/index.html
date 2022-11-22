@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Halloween Shop</title>
-    <link rel="stylesheet" href="./assets/css/app.css">
-</head>
-<body>
-    <div class="app--header">
-
-    </div>
-    <div id="app"></div>
-    <script type="module" src="./js/app.js"></script>
-    <script src="./js/apis/LoginApi.js"></script> 
-    <script src="./js/apis/DashboardApi.js"></script> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halloween Shop : Login</title>
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    <link rel="stylesheet" href="./assets/css/switch.css" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</body>
+  </head>
+  <body>
+    <div class="app--header"></div>
+    <div id="app"></div>
+    <script type="module">
+      import Login from "./js/views/Login.js";
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        document.querySelector("#app").innerHTML = await Login.getHtml();
+
+        document
+          .querySelector("#app")
+          .addEventListener("submit", async (event) => {
+            await Login.loginSubmit(event);
+          });
+      });
+    </script>
+  </body>
 </html>

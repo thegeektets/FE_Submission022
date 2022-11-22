@@ -16,9 +16,13 @@ body {
   line-height: 1.5;
   font-weight: 500;
 }
+.app--body {
+    display: inline-block;
+    width: 70%;
+}
 .nav {
   width: var(--nav-width);
-  height: 100vh;
+  height: 200vh;
   color: #222222;
   float: left;
   border-right: 1px solid #222222;
@@ -77,6 +81,28 @@ body {
   border: 1px solid #979797;
 }
 
-a {
-  color: #009579;
+div#revenueSwitch {
+    display: inline-block;
+    float: right;
+}
+.bar-chart , .best-sellers {
+    display: block;
+    width: 100% !important;
+    height: 400px !important;
+}
+.dashboard--metrics {
+    display: block;
+    list-style: none;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.dashboard--metrics li {
+    width: 30%;
+    display: inline-block;
+    border: 1px solid;
+    padding: 10px;
+}
+.metric--value {
+    font-size: 21px;
+    padding: 5px;
 }
