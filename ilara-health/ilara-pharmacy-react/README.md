@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# ilara-pharmacy-react
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a react project for a pharmacy checkout ui
+
+## App Structure
+
+The application is structured by features, each feature having its own directory that contains the React components, actions, and reducers related to that feature.
+
+### Routes
+- `/` : Home page 
+- `/inventory` : Inventory page, it shows the list of items
+- `/inventory/:id` : Inventory item detail page, it shows the detail of a specific item
+- `/orders` : Orders page, it shows the list of orders
+- `/orders/:id` : Order detail page, it shows the detail of a specific order
+- `/customers` : Customers page, it shows the list of customers
+- `/customers/:id` : Customer detail page, it shows the detail of a specific customer
+- `/checkout` : Checkout page, it allows the user to place an order
+- `/login` : Login page
+- `/logout` : Logout page
+
+
+## Libraries
+This project uses the following libraries:
+
+react-router for handling routing and navigation.
+redux or mobx for managing the state of the application.
 
 ## Available Scripts
 
