@@ -1,0 +1,14 @@
+{
+  "name": "robot-vacuum",
+  "version": "1.0.0",
+  "description": "robot vacuum cleaners",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
+}
