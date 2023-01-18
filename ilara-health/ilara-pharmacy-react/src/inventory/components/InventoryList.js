@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import InventoryItem from "./InventoryItem";
 import EditForm from "./EditForm";
 import { connect } from "react-redux";
-import { fetchItems, editItem, saveItem } from "./actions/inventoryActions";
+import { fetchItems, editItem, saveItem } from "../actions/inventoryActions";
 const InventoryList = () => {
   const [inventory, setInventory] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
